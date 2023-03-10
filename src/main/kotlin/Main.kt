@@ -3,6 +3,7 @@ fun main() {
     val matatu = Car("Nissan", "Toyota", "Yellow", 14)
     matatu.carry(24) // carrying overcapacity.
     matatu.carry(14) // carrying capacity.
+    matatu.carry(10) // carrying less than capacity.
     matatu.identity()
     println(matatu.calculateParkingFees(50))
 
@@ -10,6 +11,7 @@ fun main() {
     val busname = Bus("Scania", "Isuzu", "black", 56)
     println(busname.maxTripFare(150.99))
     println(busname.calculateParkingFees(2))
+    busname.identity()
 
 }
 
@@ -33,14 +35,14 @@ parking fees by multiplying the hours by 20
  open class Car(var make: String, var model: String, var color: String, var capacity: Int){
     fun carry(people: Int){
         var x = people - capacity
-        if (people.equals(capacity)){
+        if (people <= capacity){
             println("Carrying $people passengers.")
         }else{
             println("Over capacity by $x people." )
         }
     }
     fun identity(){
-        println("Iam a white subaru legacy.")
+        println("Iam a $color $make $model.")
     }
     open fun calculateParkingFees(hours: Int): Int{
         return hours * 20
